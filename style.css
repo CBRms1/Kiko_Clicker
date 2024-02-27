@@ -1,0 +1,523 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Kode Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 600;
+}
+
+body {
+    background: url(http://getwallpapers.com/wallpaper/full/a/2/2/1028441-cool-grassland-background-3840x2160-for-windows-10.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: hidden;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* kiko button */
+
+.img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    max-height: 100%;
+    z-index: 1;
+}
+
+.img img {
+    width: 60vh;
+    height: 60vh;
+    border-radius: 7.5vh;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.img img.clicked {
+    transform: scale(0.9);
+}
+
+/* score */
+
+.score {
+    position: absolute;
+    top: 3%;
+    left: 2%;
+    cursor: default;
+    font-size: 4vh;
+    z-index: 1;
+}
+
+/* power displays */
+
+.clickPerSecondPowerDisplay, .clickPowerDisplay {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 4vh;
+    z-index: 1;
+}
+
+.clickPowerDisplay {
+    top: 13%;
+    z-index: 1;
+}
+
+.clickPerSecondPowerDisplay {
+    top: 18%;
+    z-index: 1;
+}
+
+/* auto click button */
+
+.autoClick {
+    position: absolute;
+    left: 50%;
+    top: 2.5%;
+    transform: translateX(-50%);
+    border: none;
+    cursor: pointer;
+    padding: 2vh 4vh;
+    background-color: #4CAF50;
+    color: black;
+    border-radius: 3vh;
+    font-size: 100%;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    z-index: 1;
+}
+
+.autoClick:hover {
+    background-color: #45a049;
+}
+
+.autoClick.activated {
+    color: red;
+}
+
+/* click effect */
+
+.clickEffect {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 0, 0, 0.5);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(80%, 80%);
+    z-index: 1;
+}
+
+/* aside menu */
+
+.menu {
+    position: absolute;
+    top: 0;
+    right: -50vh;
+    width: 40vh;
+    height: 100%;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10.6px);
+    -webkit-backdrop-filter: blur(10.6px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    z-index: 1;
+}
+
+.menu ul div {
+    width: 100%;
+    height: 10vh;
+    text-align: center;
+    background-color: #45a049;
+    z-index: 1;
+}
+
+.menu ul div p {
+    position: relative;
+    font-size: 4vh;
+    top: 50%;
+    transform: translatey(-50%);
+    z-index: 1;
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+    z-index: 1;
+}
+
+.menu ul li {
+    margin: 5px 10px 10px 10px;
+    z-index: 1;
+}
+
+.menu ul li button {
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    padding: 10px 10px 10px 10px;
+    color: black;
+    width: 100%;
+    font-size: 4vh;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+.rm {
+    font-size: 4vh;
+    z-index: 1;
+}
+
+.menu ul li button strong {
+    pointer-events: none;
+    z-index: 1;
+}
+
+.menu ul li button i {
+    pointer-events: none;
+    font-size: 2.4vh;
+    z-index: 1;
+    font-weight: 200;
+}
+
+.toggleMenuBtn {
+    position: absolute;
+    right: 4%;
+    top: 2%;
+    width: 1vh;
+    height: 3vh;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 1;
+}
+
+.toggleMenuBtn.openMenu {
+    transform: translateX(-38.5vh);
+    z-index: 1;
+}
+
+.upgradeImg {
+    position: absolute;
+    border-radius: 14px;
+    width: 6vh;
+    height: 6vh;
+    z-index: 1;
+}
+
+.unavailable {
+    background-color: #ccc;
+    z-index: 1;
+}
+
+/* achievements */
+
+.achievements {
+    position: absolute;
+    right: 3%;
+    bottom: 10%;
+    padding: 3vh;
+    border-radius: 4vh;
+    transition: transform 0.3s ease;
+    z-index: 1;
+}
+
+.achievements.openMenu {
+    transform: translateX(-38.5vh);
+    z-index: 1;
+}
+
+.showAchievement {
+    animation: opacityAnim 5s linear infinite;
+    font-size: 3vh;
+    border: 1px solid #000000;
+    background-color: #ffff8f;
+    z-index: 2;
+}
+
+.achievementsMenu {
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    background-color: #001020;
+    border-radius: 2vh;
+    border: none;
+    outline: none;
+    padding: 3vh;
+    margin: 3vh 1vh 1vh 3vh;
+    z-index: 1;
+}
+
+.openAchievementsIcon {
+    position: absolute;
+    width: 10vh;
+    height: 5vh;
+    right: 3%;
+    bottom: 2%;
+    cursor: pointer;
+    border-radius: 2vh;
+    transition: transform 0.3s ease;
+    z-index: 1;
+}
+
+.openAchievementsIcon.openMenu {
+    transform: translateX(-38.5vh);
+    z-index: 1;
+}
+
+.closeAchievementsIcon {
+    position: absolute;
+    width: 10vh;
+    height: 10vh;
+    right: 2%;
+    top: 2%;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.dialogContent article img {
+    max-width: 100%;
+    height: auto;
+    margin-right: 1vh;
+    z-index: 1;
+}
+
+.dialogContent article {
+    display: flex;
+    align-items: center;
+    width: 92%;
+    background-color: #7f0000;
+    border: 2px solid #EBEBEB;
+    border-radius: 2vh;
+    z-index: 1;
+}
+
+.dialogContent figcaption {
+    font-size: 4vh;
+    font-family: sans-serif;
+    z-index: 1;
+}
+
+.achievementName {
+    color: #311b92;
+    font-size: 5vh;
+    padding-right: 2vh;
+    padding-left: 2vh;
+    z-index: 1;
+}
+
+/* events */
+
+.eventDisplay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10vh;
+    padding: 20px;
+    font-size: 10vh;
+    pointer-events: none;
+    font-weight: bold;
+}
+
+.rainTxt {
+    animation: opacityAnim 5s linear infinite;
+    background-color: rgb(55, 40, 99, 0.5);
+    color: #311b92;
+    text-shadow: 5px 5px 10px #311b92;
+    z-index: 2;
+}
+
+.windTxt {
+    animation: opacityAnim 5s linear infinite;
+    background-color: rgb(0, 144, 56, 0.5);
+    color: #71c55c;
+    text-shadow: 5px 5px 10px #71c55c;
+    z-index: 2;
+}
+
+.rain {
+    position: absolute;
+    width: 2px;
+    height: 15px;
+    background-color: blue;
+    animation: rainAnim 1s linear forwards;
+}
+
+.wind {
+    position: absolute;
+    width: 20px;
+    height: 10px;
+    background-color: transparent;
+    animation: windAnim 6s linear forwards, windRotation 6s linear forwards;
+    border-radius: 50% 30% 30% 50%;
+    border: 1px solid #007000;
+    background-color: #258d19;
+    transition: transform 0.5s ease;
+}
+
+/* credits */
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 2vh;
+    font-size: 2vh;
+}
+
+/* animations */
+
+@keyframes opacityAnim {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes rainAnim {
+    from {
+        bottom: 100%;
+    }
+    to {
+        bottom: -20px;
+    }
+}
+
+@keyframes windAnim {
+    from {
+        left: 100%;
+    }
+    to {
+        left: -20px;
+    }
+}
+
+@keyframes windRotation {
+    from {
+        transform: rotateX(180deg);
+    }
+    to {
+        transform: rotateX(0deg);
+    }
+}
+
+/* responsive */
+
+@media (max-width: 600px) {
+    .score {
+        font-size: 3vh;
+    }
+
+    .clickPerSecondPowerDisplay, .clickPowerDisplay {
+        font-size: 2vh;
+    }
+
+    .img img {
+        width: 40vh;
+        height: 40vh;
+    }
+
+    .autoClick {
+        padding: 1vh 2vh;
+    }
+
+    .toggleMenuBtn img {
+        right: 18%;
+        width: 4vh;
+        height: 4vh;
+    }
+
+    .toggleMenuBtn.openMenu {
+        transform: translateX(-18.5vh);
+    }
+
+    .openAchievementsIcon {
+        right: 10%;
+    }
+
+    .openAchievementsIcon.openMenu {
+        transform: translateX(-18.5vh);
+    }
+
+    .eventDisplay {
+        font-size: 4vh;
+    }
+
+    .menu {
+        width: 20vh;
+    }
+
+    .menu ul div p {
+        font-size: 2vh;
+    }
+
+    .menu ul li button i {
+        font-size: 1vh;
+    }
+
+    .menu ul li button strong {
+        font-size: 2vh;
+    }
+
+    .openAchievementsIcon {
+        width: 8vh;
+        height: 4vh;
+        bottom: 6%;
+    }
+
+    .achievementsMenu {
+        padding: 1.5vh;
+        margin: 1.5vh 0.5vh 0.5vh 1.5vh;
+    }
+
+    .closeAchievementsIcon {
+        width: 4vh;
+        height: 4vh;
+    }
+
+    .dialogContent article {
+        width: 85%;
+        border: 1px solid #EBEBEB;
+    }
+    
+    .dialogContent figcaption {
+        font-size: 1.5vh;
+    }
+    
+    .achievementName {
+        font-size: 2vh;
+        padding-right: 1vh;
+        padding-left: 1vh;
+    }
+
+    .dialogContent img {
+        width: 6vh;
+        height: 6vh;
+    }
+
+    .achievements {
+        font-size: 2vh;
+    }
+
+    footer {
+        font-size: 1.5vh;
+    }
+}

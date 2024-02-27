@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiko Clicker</title>
+    <link rel="icon" href="img/Kiko_Joinha.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <section>
+            <!-- total score -->
+            <h2 class="score" id="score">score: 0</h2>
+
+            <!-- show click power and click per second power -->
+            <h2 class="clickPowerDisplay">Click Power: <span id="clickPowerDisplay">1</span></h2>
+            <h2 class="clickPerSecondPowerDisplay">Score per Second: <span id="scorePerSecondDisplay">0</span></h2>
+
+            <!-- click image -->
+            <div class="img">
+                <img id="clickButton" src="img/Kiko_Joinha.png">
+            </div>
+
+            <!-- upgrades -->
+            <aside class="menu" id="menu">
+                <ul id="upgrades">
+                    <div>
+                        <p>Kiko's Shop</p>
+                    </div>
+                    <li>
+                        <button id="up1_click" data-index="0">
+
+                            <strong class="bonne">Bonne</strong><br>
+
+                            <i>Cust: 100</i><br>
+                            <i>Click Power: 1</i><br>
+
+                            <i>Level: <span id="upgradeCount0">0</span></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button id="up2_perSecond" data-index="1">
+
+                            <strong class="meat">Meat</strong><br>
+
+                            <i>Cust: 1000</i><br>
+                            <i>Score Per Second: 10</i><br>
+
+                            <i>Level: <span id="upgradeCount1">0</span></i>
+                        </button>
+                    </li>
+
+                    <li>
+                        <button id="up3_click" data-index="2">
+
+                            <strong class="rm">Roice with Mincedmeat</strong><br>
+
+                            <i>Cust: 5000</i><br>
+                            <i>Click Power: 50</i><br>
+
+                            <i>Level: <span id="upgradeCount2">0</span></i>
+                        </button>
+                    </li>
+
+                    <li>
+                        <button id="up4_perSecond" data-index="3">
+
+                            <strong class="brad">Bread</strong><br>
+
+                            <i>Cust: 10000</i><br>
+                            <i>Score Per Second: 100</i><br>
+
+                            <i>Level: <span id="upgradeCount3">0</span></i>
+                        </button>
+                    </li>
+
+                    <li>
+                        <button id="up5_click" data-index="4">
+
+                            <strong class="bc">Bread with Cream</strong><br>
+
+                            <i>Cust: 50000</i><br>
+                            <i>Click Power: 500</i><br>
+
+                            <i>Level: <span id="upgradeCount4">0</span></i>
+                        </button>
+                    </li>
+
+                    <li>
+                        <button id="up6_perSecond" data-index="5">
+
+                            <strong class="mb">Meat Bucket</strong><br>
+
+                            <i>Cust: 100000</i><br>
+                            <i>Score Per Second: 1000</i><br>
+
+                            <i>Level: <span id="upgradeCount5">0</span></i>
+                        </button>
+                    </li>
+
+                    <li>
+                        <button id="up7_click" data-index="6">
+
+                            <strong class="chicken">Chicken</strong><br>
+
+                            <i>Cust: 500000</i><br>
+                            <i>Click Power: 5000</i><br>
+
+                            <i>Level: <span id="upgradeCount6">0</span></i>
+                        </button>
+                    </li>
+
+                    <li>
+                        <button id="up8_perSecond" data-index="7">
+
+                            <strong class="barbecue">Barbecue</strong><br>
+
+                            <i>Cust: 1000000</i><br>
+                            <i>Score Per Second: 10000</i><br>
+
+                            <i>Level: <span id="upgradeCount7">0</span></i>
+                        </button>
+                    </li>
+
+                    <li>
+                        <button id="up9_click" data-index="8">
+
+                            <strong class="hs">Half Snack</strong><br>
+
+                            <i>Cust: 5000000</i><br>
+                            <i>Click Power: 50000</i><br>
+
+                            <i>Level: <span id="upgradeCount8">0</span></i>
+                        </button>
+                    </li>
+
+                    <li>
+                        <button id="up10_perSecond" data-index="9">
+
+                            <strong class="snack">Snack</strong><br>
+
+                            <i>Cust: 10000000</i><br>
+                            <i>Score Per Second: 100000</i><br>
+
+                            <i>Level: <span id="upgradeCount9">0</span></i>
+                        </button>
+                    </li>
+                </ul>
+            </aside>
+            <button class="toggleMenuBtn" id="toggleMenuBtn"><img class="upgradeImg" src="img/upgradeIcon.png"></button>
+
+            <!-- auto click -->
+            <button class="autoClick" id="autoClick" hidden>Auto</button>
+
+            <!-- show achievement -->
+            <div class="achievements" id="achievements">
+                <p id="achievementTxt"></p>
+            </div>
+
+            <!-- achievements menu -->
+            <img class="openAchievementsIcon" id="openAchievementsIcon" onclick="OpenAchievementsMenu()"
+                src="http://assets1.ignimgs.com/vid/thumbnails/user/2013/12/03/20823568_achievess2222thumb.jpg">
+
+            <dialog class="achievementsMenu" id="achievementsMenu">
+                <div class="dialogContent">
+                    <figure>
+                        <article id="unlockAutoClickLvl1">
+                            <img src="img/achievementMenuImg.png">
+                            <figcaption><span class="achievementName">Auto Click lvl1 </span>Click Kiko a total of 100 times to unlock this achievement.</figcaption>
+                        </article>
+
+                        <article id="unlockAutoClickLvl2">
+                            <img src="img/achievementMenuImg.png">
+                            <figcaption><span class="achievementName">Auto Click lvl2 </span>Click Kiko a total of 1000 times to unlock this achievement.</figcaption>
+                        </article>
+
+                        <article id="unlockAutoClickLvl3">
+                            <img src="img/achievementMenuImg.png">
+                            <figcaption><span class="achievementName">Auto Click lvl3 </span>Click Kiko a total of 10000 times to unlock this achievement.</figcaption>
+                        </article>
+                    </figure>
+
+                    <img class="closeAchievementsIcon" onclick="CloseAchievementsMenu()"
+                        src="img/closeAchieventsMenu.png">
+                </div>
+            </dialog>
+
+            <!-- rendom events -->
+            <div class="eventContainer" id="eventContainer"></div>
+            <p class="eventDisplay" id="eventDisplay"></p>
+
+        </section>
+    </main>
+
+    <!-- credits -->
+    <footer>
+        <p>&copy; 2024 Cauber M. S. | Henrike P. B. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
